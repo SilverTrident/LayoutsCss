@@ -1,0 +1,57 @@
+h1{
+ text-align: center;
+}
+section img{
+    max-width: 100%;
+    display: block;
+    
+}
+.grid1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    /*grid-template-columns: repeat(3,fr);*/
+    max-width: 800px;
+    margin: 0 auto;
+
+    /*espaçamento entre os itens*/
+    grid-gap: 2rem;
+}
+
+/*Fla diretamente com os filhos de grid 1 que são divs
+    n+4 todos apartir do 4° filho
+*/
+.grid1 > div:nth-child(n+4){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    align-items: center;
+}
+
+/*Coloca no mesmo nivel dos filhos de div*/
+ .grid1 > div.anuncio{
+     /*Coloca item na primeira coluna*/
+    grid-column: 1;
+     /*oculpa as linhas 2  até a 5*/
+    grid-row: 2 / 5;
+    border-top :16px  solid tomato;
+    display: block;
+}
+/*Tudo que for abaixo de 600px aplicar */
+@media(max-width: 800px){
+    .grid1{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+    }
+
+    .grid1 > div:nth-child(n+4){
+        display: block;
+    }
+    .grid1 > div.anuncio{
+        width: 100%;
+        grid-column: auto;
+        grid-row: auto;
+        order: -1;
+    }
+}
+    
